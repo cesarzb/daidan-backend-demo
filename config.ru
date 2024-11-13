@@ -1,5 +1,5 @@
-require_relative 'app'
+require_relative 'config/application'
 
 use Rack::Reloader, 0
 
-run App.new
+run Application.new

@@ -1,10 +1,10 @@
 require 'rack'
 require 'json'
-require_relative 'database'
+require_relative '../db/database'
 require 'graphql'
-require_relative 'schema'
+require_relative '../graphql/schema'
 
-class App
+class Application
   def call(env)
     req = Rack::Request.new(env)
 

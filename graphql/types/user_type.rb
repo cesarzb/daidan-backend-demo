@@ -1,4 +1,4 @@
-require_relative 'base_object'
+require_relative '../base_object'
 require_relative 'expenditure_type'
 require_relative '../../models/expenditure'
 

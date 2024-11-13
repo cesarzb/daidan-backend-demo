@@ -1,6 +1,6 @@
 require 'sequel'
 
-DB = Sequel.sqlite('db.db')
+DB = Sequel.sqlite('./db.db')
 
 unless DB.table_exists?(:users)
   DB.create_table :users do
