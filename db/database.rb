@@ -1,6 +1,9 @@
 require 'sequel'
+require 'yaml'
 
-DB = Sequel.sqlite('./db.db')
+config_path = File.expand_path('../config/database.yml', __dir__)
+db = YAML.load_file(config_path)[:database]
+DB = Sequel.sqlite(db)
 
 unless DB.table_exists?(:users)
   DB.create_table :users do
