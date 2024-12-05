@@ -1,1 +1,3 @@
-database: db.db
+db:
+  adapter: sqlite
+  database: db.db

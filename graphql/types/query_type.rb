@@ -17,11 +17,19 @@ module Types
     end
 
     def expenditures
-      Expenditure.all
+      if context[:current_user]
+        Expenditure.all
+      else
+        raise GraphQL::ExecutionError, "Authentication required"
+      end
     end
 
     def users
-      User.all
+      if context[:current_user]
+        User.all
+      else
+        raise GraphQL::ExecutionError, "Authentication required"
+      end
     end
   end
 end
