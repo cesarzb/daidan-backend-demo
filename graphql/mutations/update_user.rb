@@ -1,23 +1,23 @@
-require_relative '../types/user_type'
+module Graphql
+  module Mutations
+    class UpdateUser < BaseMutation
+      argument :id, ID, required: true
+      argument :name, String, required: false
+      argument :email, String, required: false
 
-module Mutations
-  class UpdateUser < Types::BaseMutation
-    argument :id, ID, required: true
-    argument :name, String, required: false
-    argument :email, String, required: false
+      type ::Graphql::Types::UserType
 
-    type Types::UserType
+      def resolve(id:, name: nil, email: nil)
+        user = ::Models::User[id]
+        raise GraphQL::ExecutionError, "User not found" unless user
 
-    def resolve(id:, name: nil, email: nil)
-      user = User[id]
-      raise GraphQL::ExecutionError, "User not found" unless user
+        user.update(name: name) if name
+        user.update(email: email) if email
 
-      user.update(name: name) if name
-      user.update(email: email) if email
-
-      user
-    rescue Sequel::Error => e
-      GraphQL::ExecutionError.new("Unable to update user: #{e.message}")
+        user
+      rescue Sequel::Error => e
+        GraphQL::ExecutionError.new("Unable to update user: #{e.message}")
+      end
     end
   end
 end

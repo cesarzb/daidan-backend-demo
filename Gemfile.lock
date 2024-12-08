@@ -26,6 +26,7 @@ GEM
     sqlite3 (2.2.0-x86_64-darwin)
     sqlite3 (2.2.0-x86_64-linux-gnu)
     sqlite3 (2.2.0-x86_64-linux-musl)
+    zeitwerk (2.7.1)
 
 PLATFORMS
   aarch64-linux-gnu
@@ -47,6 +48,7 @@ DEPENDENCIES
   rack
   sequel
   sqlite3
+  zeitwerk
 
 BUNDLED WITH
    2.5.23

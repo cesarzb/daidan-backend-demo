@@ -1,9 +1,12 @@
 require 'rack'
 require 'json'
+require 'zeitwerk'
 require_relative '../db/database'
 require 'graphql'
-require_relative '../graphql/schema'
-require_relative '../models/user'
+
+loader = Zeitwerk::Loader.new
+loader.push_dir(File.expand_path('..', __dir__))
+loader.setup
 
 class Application
   def call(env)
@@ -13,9 +16,9 @@ class Application
       body = req.body.read
       params = body.empty? ? {} : JSON.parse(body)
 
-      current_user = env['current_user_id'] ? User.find(id: env['current_user_id']) : nil
+      current_user = env['current_user_id'] ? ::Models::User.find(id: env['current_user_id']) : nil
 
-      result = Schema.execute(
+      result = ::Graphql::Schema.execute(
         params['query'],
         variables: params['variables'],
         context: { current_user: current_user },
