@@ -3,6 +3,7 @@ require 'json'
 require 'zeitwerk'
 require_relative '../db/database'
 require 'graphql'
+require 'dotenv/load'
 
 loader = Zeitwerk::Loader.new
 loader.push_dir(File.expand_path('..', __dir__))

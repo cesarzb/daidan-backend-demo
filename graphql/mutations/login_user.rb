@@ -15,10 +15,7 @@ class LoginUser < BaseMutation
 
     payload = { user_id: user.id }
 
-    secrets_path = File.expand_path('../../config/secrets.yml', __dir__)
-    jwt_secret = YAML.load_file(secrets_path)['jwt_secret']
-
-    token = JWT.encode(payload, jwt_secret, 'HS256')
+    token = JWT.encode(payload, ENV['JWT_SECRET'], 'HS256')
     { token: token, user: user }
   end
 end
