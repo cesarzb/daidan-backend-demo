@@ -24,14 +24,14 @@ class Application
         context: { current_user: current_user },
         operation_name: params['operationName']
       )
-      
+
       [200, { 'content-type' => 'application/json' }, [result.to_json]]
     else
       [404, { 'content-type' => 'text/plain' }, ['Not Found']]
     end
   rescue JSON::ParserError
     [400, { 'content-type' => 'application/json' }, [{ error: 'Invalid JSON' }.to_json]]
-  rescue => e
+  rescue StandardError => e
     puts "Error processing request: #{e.message}"
     [500, { 'content-type' => 'application/json' }, [{ error: 'Internal Server Error' }.to_json]]
   end

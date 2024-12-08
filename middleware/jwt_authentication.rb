@@ -12,10 +12,10 @@ class JwtAuthentication
       token = auth_header.split(' ').last
 
       secrets_path = File.expand_path('../config/secrets.yml', __dir__)
-      jwt_secret = YAML.load_file(secrets_path)["jwt_secret"]
+      jwt_secret = YAML.load_file(secrets_path)['jwt_secret']
 
       begin
-        payload, _ = JWT.decode(token, jwt_secret, true, { algorithm: 'HS256' })
+        payload, = JWT.decode(token, jwt_secret, true, { algorithm: 'HS256' })
 
         env['current_user_id'] = payload['user_id']
       rescue JWT::DecodeError

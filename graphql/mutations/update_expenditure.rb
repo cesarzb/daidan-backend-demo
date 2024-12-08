@@ -9,7 +9,7 @@ module Graphql
 
       def resolve(id:, name: nil, cost: nil)
         expenditure = ::Models::Expenditure[id]
-        raise GraphQL::ExecutionError, "Expenditure not found" unless expenditure
+        raise GraphQL::ExecutionError, 'Expenditure not found' unless expenditure
 
         expenditure.update(name: name) if name
         expenditure.update(cost: cost) if cost

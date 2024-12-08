@@ -1,6 +1,2 @@
-module Graphql
-  module Mutations
-    class BaseMutation < GraphQL::Schema::Mutation
-    end
-  end
+class BaseMutation < GraphQL::Schema::Mutation
 end

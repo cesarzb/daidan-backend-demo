@@ -9,7 +9,7 @@ module Graphql
 
       def resolve(user_id:, name:, cost:)
         user = ::Models::User[user_id]
-        raise GraphQL::ExecutionError, "User not found" unless user
+        raise GraphQL::ExecutionError, 'User not found' unless user
 
         Expenditure.create(user_id: user_id, name: name, cost: cost)
       rescue Sequel::Error => e

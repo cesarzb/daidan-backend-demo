@@ -22,4 +22,4 @@ DB[:expenditures].insert(user_id: alice_id, name: 'Cleaning supplies', cost: 4.5
 DB[:expenditures].insert(user_id: bob_id, name: 'Coffee', cost: 3.0)
 DB[:expenditures].insert(user_id: bob_id, name: 'Lunch', cost: 12.0)
 
-puts "Inserted expenditures for Alice and Bob."
+puts 'Inserted expenditures for Alice and Bob.'

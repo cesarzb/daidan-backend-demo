@@ -1,7 +1,7 @@
 module Graphql
   module Types
     class MutationType < ::Graphql::Types::BaseObject
-      description "The mutation root of this schema"
+      description 'The mutation root of this schema'
 
       field :create_user, mutation: ::Graphql::Mutations::CreateUser
       field :update_user, mutation: ::Graphql::Mutations::UpdateUser

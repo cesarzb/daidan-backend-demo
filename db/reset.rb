@@ -4,4 +4,4 @@ DB.tables.each do |table|
   DB.drop_table(table)
 end
 
-puts "All tables dropped successfully."
+puts 'All tables dropped successfully.'

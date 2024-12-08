@@ -9,7 +9,7 @@ module Graphql
 
       def resolve(id:, name: nil, email: nil)
         user = ::Models::User[id]
-        raise GraphQL::ExecutionError, "User not found" unless user
+        raise GraphQL::ExecutionError, 'User not found' unless user
 
         user.update(name: name) if name
         user.update(email: email) if email

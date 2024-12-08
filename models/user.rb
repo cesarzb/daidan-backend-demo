@@ -18,10 +18,10 @@ module Models
 
     def validate
       super
-      validates_presence [:name, :email], message: "is required"
-      validates_unique :email, message: "is already taken"
-      validates_format /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i, :email, message: "is not a valid email address"
-      validates_min_length 3, :name, message: "must be at least 3 characters long"
+      validates_presence %i[name email], message: 'is required'
+      validates_unique :email, message: 'is already taken'
+      validates_format(/\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i, :email, message: 'is not a valid email address')
+      validates_min_length 3, :name, message: 'must be at least 3 characters long'
       errors.add(:password, 'cannot be empty') if new? && !password
       errors.add(:password, 'must be at least 6 characters') if password && password.length < 6
     end

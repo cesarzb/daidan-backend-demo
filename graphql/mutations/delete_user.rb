@@ -7,7 +7,7 @@ module Graphql
 
       def resolve(id:)
         user = ::Models::User[id]
-        raise GraphQL::ExecutionError, "User not found" unless user
+        raise GraphQL::ExecutionError, 'User not found' unless user
 
         user.destroy
         user
