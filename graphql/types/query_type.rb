@@ -1,4 +1,4 @@
-class QueryType < BaseObject
+class QueryType < BaseObjectType
   description 'The query root of this schema'
 
   field :users, [UserType], null: false do

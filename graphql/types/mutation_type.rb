@@ -1,4 +1,4 @@
-class MutationType < BaseObject
+class MutationType < BaseObjectType
   description 'The mutation root of this schema'
 
   field :create_user, mutation: CreateUser

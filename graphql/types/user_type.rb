@@ -1,5 +1,4 @@
-class UserType < BaseObject
-  field :id, ID, null: false
+class UserType < BaseObjectType
   field :name, String, null: false
   field :email, String, null: false
   field :expenditures, [ExpenditureType], null: true,
