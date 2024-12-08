@@ -6,6 +6,11 @@ require 'graphql'
 
 loader = Zeitwerk::Loader.new
 loader.push_dir(File.expand_path('..', __dir__))
+loader.collapse(File.expand_path('../graphql', __dir__))
+loader.collapse(File.expand_path('../graphql/types', __dir__))
+loader.collapse(File.expand_path('../graphql/mutations', __dir__))
+loader.collapse(File.expand_path('../models', __dir__))
+
 loader.setup
 
 class Application
@@ -16,9 +21,9 @@ class Application
       body = req.body.read
       params = body.empty? ? {} : JSON.parse(body)
 
-      current_user = env['current_user_id'] ? ::Models::User.find(id: env['current_user_id']) : nil
+      current_user = env['current_user_id'] ? User.find(id: env['current_user_id']) : nil
 
-      result = ::Graphql::Schema.execute(
+      result = Schema.execute(
         params['query'],
         variables: params['variables'],
         context: { current_user: current_user },

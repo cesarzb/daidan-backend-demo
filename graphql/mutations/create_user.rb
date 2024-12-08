@@ -1,16 +1,12 @@
-module Graphql
-  module Mutations
-    class CreateUser < BaseMutation
-      argument :name, String, required: true
-      argument :email, String, required: true
+class CreateUser < BaseMutation
+  argument :name, String, required: true
+  argument :email, String, required: true
 
-      type ::Graphql::Types::UserType
+  type UserType
 
-      def resolve(name:, email:)
-        ::Models::User.create(name: name, email: email)
-      rescue Sequel::Error => e
-        GraphQL::ExecutionError.new("Unable to create user: #{e.message}")
-      end
-    end
+  def resolve(name:, email:)
+    User.create(name: name, email: email)
+  rescue Sequel::Error => e
+    GraphQL::ExecutionError.new("Unable to create user: #{e.message}")
   end
 end

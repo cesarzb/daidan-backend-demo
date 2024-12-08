@@ -1,6 +1,2 @@
-module Graphql
-  module Types
-    class BaseObject < GraphQL::Schema::Object
-    end
-  end
+class BaseObject < GraphQL::Schema::Object
 end
