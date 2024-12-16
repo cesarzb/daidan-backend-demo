@@ -1,4 +1,4 @@
-class MutationType < BaseObjectType
+class MutationType < Daidan::BaseObjectType
   description 'The mutation root of this schema'
 
   field :create_user, mutation: CreateUser
@@ -9,5 +9,5 @@ class MutationType < BaseObjectType
   field :update_expenditure, mutation: UpdateExpenditure
   field :delete_expenditure, mutation: DeleteExpenditure
 
-  field :login_user, mutation: LoginUser
+  field :login_user, mutation: Daidan::LoginUser
 end

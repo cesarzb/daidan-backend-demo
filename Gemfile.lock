@@ -1,3 +1,13 @@
+PATH
+  remote: ../daidan
+  specs:
+    daidan (0.1.0)
+      bcrypt (~> 3.1)
+      dotenv (~> 3.1)
+      graphql (~> 2.4)
+      jwt (~> 2.9)
+      sequel (~> 5.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -5,9 +15,9 @@ GEM
     base64 (0.2.0)
     bcrypt (3.1.20)
     bigdecimal (3.1.8)
-    dotenv (3.1.4)
+    dotenv (3.1.6)
     fiber-storage (1.0.0)
-    graphql (2.4.7)
+    graphql (2.4.8)
       base64
       fiber-storage
     json (2.9.0)
@@ -23,9 +33,11 @@ GEM
       nio4r (~> 2.0)
     racc (1.8.1)
     rack (3.1.8)
+    rack-cors (2.0.2)
+      rack (>= 2.0.0)
     rainbow (3.1.1)
     regexp_parser (2.9.3)
-    rubocop (1.69.1)
+    rubocop (1.69.2)
       json (~> 2.3)
       language_server-protocol (>= 3.17.0)
       parallel (~> 1.10)
@@ -35,21 +47,21 @@ GEM
       rubocop-ast (>= 1.36.2, < 2.0)
       ruby-progressbar (~> 1.7)
       unicode-display_width (>= 2.4.0, < 4.0)
-    rubocop-ast (1.36.2)
+    rubocop-ast (1.37.0)
       parser (>= 3.3.1.0)
     ruby-progressbar (1.13.0)
     sequel (5.87.0)
       bigdecimal
-    sqlite3 (2.4.0-aarch64-linux-gnu)
-    sqlite3 (2.4.0-aarch64-linux-musl)
-    sqlite3 (2.4.0-arm-linux-gnu)
-    sqlite3 (2.4.0-arm-linux-musl)
-    sqlite3 (2.4.0-arm64-darwin)
-    sqlite3 (2.4.0-x86-linux-gnu)
-    sqlite3 (2.4.0-x86-linux-musl)
-    sqlite3 (2.4.0-x86_64-darwin)
-    sqlite3 (2.4.0-x86_64-linux-gnu)
-    sqlite3 (2.4.0-x86_64-linux-musl)
+    sqlite3 (2.4.1-aarch64-linux-gnu)
+    sqlite3 (2.4.1-aarch64-linux-musl)
+    sqlite3 (2.4.1-arm-linux-gnu)
+    sqlite3 (2.4.1-arm-linux-musl)
+    sqlite3 (2.4.1-arm64-darwin)
+    sqlite3 (2.4.1-x86-linux-gnu)
+    sqlite3 (2.4.1-x86-linux-musl)
+    sqlite3 (2.4.1-x86_64-darwin)
+    sqlite3 (2.4.1-x86_64-linux-gnu)
+    sqlite3 (2.4.1-x86_64-linux-musl)
     unicode-display_width (3.1.2)
       unicode-emoji (~> 4.0, >= 4.0.4)
     unicode-emoji (4.0.4)
@@ -69,11 +81,13 @@ PLATFORMS
 
 DEPENDENCIES
   bcrypt
+  daidan!
   dotenv
   graphql
   jwt
   puma
   rack
+  rack-cors
   rubocop
   sequel
   sqlite3

@@ -1,4 +1,4 @@
-class UpdateExpenditure < BaseMutation
+class UpdateExpenditure < Daidan::BaseMutation
   argument :id, ID, required: true
   argument :name, String, required: false
   argument :cost, Float, required: false

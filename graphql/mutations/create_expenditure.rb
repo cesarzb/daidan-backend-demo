@@ -1,4 +1,4 @@
-class CreateExpenditure < BaseMutation
+class CreateExpenditure < Daidan::BaseMutation
   argument :user_id, ID, required: true
   argument :name, String, required: true
   argument :cost, Float, required: true

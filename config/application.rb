@@ -1,44 +1,26 @@
-require 'rack'
-require 'json'
-require 'zeitwerk'
-require_relative '../db/database'
-require 'graphql'
 require 'dotenv/load'
+$LOAD_PATH.unshift(File.expand_path('../../daidan/lib', __dir__))
+require 'daidan'
 
-loader = Zeitwerk::Loader.new
-loader.push_dir(File.expand_path('..', __dir__))
-loader.collapse(File.expand_path('../graphql', __dir__))
-loader.collapse(File.expand_path('../graphql/types', __dir__))
-loader.collapse(File.expand_path('../graphql/mutations', __dir__))
-loader.collapse(File.expand_path('../models', __dir__))
+class Application < Daidan::Application
+  def graphql_schema
+    Schema
+  end
 
-loader.setup
+  def auth_middleware
+    Daidan::Middleware::JwtAuthentication
+  end
 
-class Application
-  def call(env)
-    req = Rack::Request.new(env)
+  def handle_json_parse_error
+    [422, { 'content-type' => 'application/json' }, [{ error: 'Malformed JSON' }.to_json]]
+  end
 
-    if req.post? && req.path == '/graphql'
-      body = req.body.read
-      params = body.empty? ? {} : JSON.parse(body)
+  def handle_internal_server_error(error)
+    puts "Custom Log: #{error.message}"
+    [500, { 'content-type' => 'application/json' }, [{ error: 'Oops, something went wrong!' }.to_json]]
+  end
 
-      current_user = env['current_user_id'] ? User.find(id: env['current_user_id']) : nil
-
-      result = Schema.execute(
-        params['query'],
-        variables: params['variables'],
-        context: { current_user: current_user },
-        operation_name: params['operationName']
-      )
-
-      [200, { 'content-type' => 'application/json' }, [result.to_json]]
-    else
-      [404, { 'content-type' => 'text/plain' }, ['Not Found']]
-    end
-  rescue JSON::ParserError
-    [400, { 'content-type' => 'application/json' }, [{ error: 'Invalid JSON' }.to_json]]
-  rescue StandardError => e
-    puts "Error processing request: #{e.message}"
-    [500, { 'content-type' => 'application/json' }, [{ error: 'Internal Server Error' }.to_json]]
+  def not_found_response
+    [404, { 'content-type' => 'text/plain' }, ['This page does not exist.']]
   end
 end

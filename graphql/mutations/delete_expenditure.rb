@@ -1,4 +1,4 @@
-class DeleteExpenditure < BaseMutation
+class DeleteExpenditure < Daidan::BaseMutation
   argument :id, ID, required: true
 
   type ExpenditureType

@@ -1,6 +1,5 @@
-class UserType < BaseObjectType
+class UserType < Daidan::BaseUserType
   field :name, String, null: false
-  field :email, String, null: false
   field :expenditures, [ExpenditureType], null: true,
                                           description: 'List of expenditures by the user'
 

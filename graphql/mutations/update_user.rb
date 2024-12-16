@@ -1,4 +1,4 @@
-class UpdateUser < BaseMutation
+class UpdateUser < Daidan::BaseMutation
   argument :id, ID, required: true
   argument :name, String, required: false
   argument :email, String, required: false

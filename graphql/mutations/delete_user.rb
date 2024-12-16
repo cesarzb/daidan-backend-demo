@@ -1,4 +1,4 @@
-class DeleteUser < BaseMutation
+class DeleteUser < Daidan::BaseMutation
   argument :id, ID, required: true
 
   type UserType
