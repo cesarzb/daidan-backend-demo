@@ -1,5 +1,6 @@
 class ExpenditureType < Daidan::BaseObjectType
-  field :user_id, ID, null: false
+  field :user, UserType, null: false,
+                         description: 'Owner of an expenditure.'
   field :name, String, null: false
   field :cost, Float, null: false
 end
