@@ -1,14 +1,6 @@
-require 'dotenv/load'
-$LOAD_PATH.unshift(File.expand_path('../../daidan/lib', __dir__))
-require 'daidan'
-
 class Application < Daidan::Application
   def graphql_schema
     Schema
-  end
-
-  def auth_middleware
-    Daidan::Middleware::JwtAuthentication
   end
 
   def handle_json_parse_error
