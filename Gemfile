@@ -1,15 +1,4 @@
 source 'https://rubygems.org'
 
-gem 'bcrypt'
-gem 'dotenv'
-gem 'graphql'
-gem 'jwt'
-gem 'puma'
-gem 'rack'
-gem 'rubocop'
-gem 'sequel'
-gem 'sqlite3'
-gem 'zeitwerk'
 gem 'rack-cors'
-
-gem 'daidan', path: '../daidan'
+gem 'daidan'
