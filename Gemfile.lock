@@ -17,19 +17,41 @@ GEM
       fiber-storage
     jwt (2.9.3)
       base64
+    mini_portile2 (2.8.8)
+    nio4r (2.7.4)
+    puma (6.5.0)
+      nio4r (~> 2.0)
     rack (3.1.8)
     rack-cors (2.0.2)
       rack (>= 2.0.0)
+    rackup (2.2.0)
+      rack (>= 3)
+    rake (13.2.1)
     sequel (5.87.0)
       bigdecimal
+    sqlite3 (2.4.1)
+      mini_portile2 (~> 2.8.0)
+    sqlite3 (2.4.1-x86_64-linux-gnu)
+    zeitwerk (2.7.1)
 
 PLATFORMS
   ruby
   x86_64-linux
 
 DEPENDENCIES
+  bcrypt
   daidan
+  dotenv
+  graphql
+  jwt
+  puma
+  rack
   rack-cors
+  rackup
+  rake
+  sequel
+  sqlite3
+  zeitwerk
 
 BUNDLED WITH
    2.6.1
