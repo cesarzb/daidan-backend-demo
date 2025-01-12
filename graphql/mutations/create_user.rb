@@ -5,7 +5,7 @@ class CreateUser < Daidan::BaseMutation
 
   type UserType
 
-  def resolve(name:, email:, password:)
+  def execute_mutation(name:, email:, password:)
     User.create(name: name, email: email, password: password)
   rescue Sequel::Error => e
     GraphQL::ExecutionError.new("Unable to create user: #{e.message}")

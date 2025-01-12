@@ -5,7 +5,15 @@ class UpdateExpenditure < Daidan::BaseMutation
 
   type ExpenditureType
 
-  def resolve(id:, name: nil, cost: nil)
+  def before_mutation
+    puts "\nAdding new expenditure\n"
+  end
+
+  def after_mutation(expenditure)
+    puts "\nAdded expenditure #{expenditure[:name]}!!!\n\n"
+  end
+
+  def execute_mutation(id:, name: nil, cost: nil)
     expenditure = Expenditure[id]
     raise GraphQL::ExecutionError, 'Expenditure not found' unless expenditure
 

@@ -3,7 +3,7 @@ class DeleteExpenditure < Daidan::BaseMutation
 
   type ExpenditureType
 
-  def resolve(id:)
+  def execute_mutation(id:)
     expenditure = Expenditure[id]
     raise GraphQL::ExecutionError, 'Expenditure not found' unless expenditure
 

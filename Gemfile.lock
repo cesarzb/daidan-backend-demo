@@ -4,7 +4,7 @@ GEM
     base64 (0.2.0)
     bcrypt (3.1.20)
     bigdecimal (3.1.8)
-    daidan (0.1.0)
+    daidan (0.2.0)
       bcrypt (~> 3.1)
       dotenv (~> 3.1)
       graphql (~> 2.4)
@@ -40,7 +40,7 @@ PLATFORMS
 
 DEPENDENCIES
   bcrypt
-  daidan
+  daidan (= 0.2.0)
   dotenv
   graphql
   jwt
