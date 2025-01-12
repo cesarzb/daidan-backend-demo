@@ -5,8 +5,7 @@ class CreateExpenditure < Daidan::BaseMutation
   type ExpenditureType
 
   def execute_mutation(name:, cost:)
-    current_user = context[:current_user]
-    raise GraphQL::ExecutionError, 'Authentication required' unless current_user
+    raise GraphQL::ExecutionError, 'Authentication required' unless context[:current_user]
 
     Expenditure.create(user_id: current_user.id, name: name, cost: cost)
   rescue Sequel::Error => e

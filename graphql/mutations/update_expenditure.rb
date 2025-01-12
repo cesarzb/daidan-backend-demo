@@ -14,6 +14,8 @@ class UpdateExpenditure < Daidan::BaseMutation
   end
 
   def execute_mutation(id:, name: nil, cost: nil)
+    raise GraphQL::ExecutionError, 'Authentication required' unless context[:current_user]
+
     expenditure = Expenditure[id]
     raise GraphQL::ExecutionError, 'Expenditure not found' unless expenditure
 
